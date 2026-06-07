@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DogeFather | Emperor of Eight Realms</title>
+    <meta
+      property="og:title"
+      content="DogeFather | Emperor of Eight Realms"
+    />
+    <meta
+      property="og:description"
+      content="The legendary emperor rises. $DOGEFATHER — Ruler of Eight Realms on ETH."
+    />
+    <meta property="og:image" content="https://grokius.xyz/assets/banner.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="description"
+      content="DogeFather — Emperor token on ETH. Zero tax, LP burnt, ownership renounced."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/meta-images/logo.png" />
+    <style>
+      :root {
+        --gold: #ffd700;
+        --gold2: #ffaa00;
+        --gold-light: #fff0b3;
+        --gold-dim: rgba(255, 215, 0, 0.08);
+        --gold-glow: rgba(255, 215, 0, 0.35);
+        --bg: #030305;
+        --bg2: #08080f;
+        --bg3: #0d0d18;
+        --text: #f0f0f0;
+        --text-dim: rgba(255, 255, 255, 0.55);
+        --text-muted: rgba(255, 255, 255, 0.3);
+        --nav-h: 72px;
+        --radius: 16px;
+        --transition: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Cinzel", serif;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      /* PARTICLE OVERLAY — subtle background texture */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 215, 0, 0.015) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* === NAV === */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: var(--nav-h);
+        transition: all 0.5s var(--transition);
+      }
+      .nav.solid {
+        background: rgba(3, 3, 5, 0.92);
+        backdrop-filter: blur(32px) saturate(1.4);
+        border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      }
+      .nav-inner {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+      }
+      .nav-logo {
+        font-family: "Cinzel", serif;
+        font-weight: 900;
+        font-size: 1.2rem;
+        letter-spacing: 0.12em;
+        color: var(--gold);
+        position: relative;
+      }
+      .nav-logo::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, var(--gold), transparent);
+        opacity: 0.4;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--text-dim);
+        transition: all 0.3s var(--transition);
+        text-transform: uppercase;
+        position: relative;
+        padding: 4px 0;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: all 0.3s var(--transition);
+        transform: translateX(-50%);
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        padding: 10px 26px;
+        background: linear-gradient(135deg, var(--gold), var(--gold2));
+        color: #000 !important;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        transition: all 0.3s var(--transition);
+        border: none;
+        box-shadow: 0 2px 16px rgba(255, 215, 0, 0.15);
+      }
+      .nav-cta::after {
+        display: none;
+      }
+      .nav-cta:hover {
+        box-shadow: 0 4px 32px rgba(255, 215, 0, 0.35);
+        transform: translateY(-2px);
+      }
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1001;
+      }
+      .burger span {
+        width: 22px;
+        height: 2px;
+        background: var(--gold);
+        transition: all 0.3s;
+        display: block;
+        border-radius: 1px;
+      }
+      .burger.on span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .burger.on span:nth-child(2) {
+        opacity: 0;
+      }
+      .burger.on span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      /* === HERO — FULLSCREEN CINEMATIC === */
+      .hero {
+        position: relative;
+        height: 100vh;
+        min-height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        animation: heroZoom 30s ease-in-out infinite alternate;
+      }
+      @keyframes heroZoom {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.08);
+        }
+      }
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(3, 3, 5, 0.25) 0%,
+          rgba(3, 3, 5, 0.5) 40%,
+          rgba(3, 3, 5, 0.95) 85%,
+          var(--bg) 100%
+        );
+      }
+      /* Vignette effect */
+      .hero-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: radial-gradient(
+          ellipse at center,
+          transparent 40%,
+          rgba(3, 3, 5, 0.6) 100%
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 24px;
+        max-width: 900px;
+      }
+      .hero-pfp {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 32px;
+        border: 2px solid rgba(255, 215, 0, 0.5);
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.2),
+          0 0 100px rgba(255, 215, 0, 0.08);
+        animation: fadeUp 0.8s ease 0.05s both;
+        position: relative;
+      }
+      .hero-pfp::after {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 215, 0, 0.15);
+        animation: pfpPulse 3s ease-in-out infinite;
+      }
+      @keyframes pfpPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.08);
+          opacity: 0;
+        }
+      }
+      .hero-pfp img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 22px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        background: rgba(255, 215, 0, 0.04);
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 36px;
+        backdrop-filter: blur(12px);
+        animation: fadeUp 0.8s ease;
+      }
+      .hero-badge .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 8px #22c55e;
+        animation: blink 1.5s infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .hero-title {
+        font-size: clamp(3.2rem, 10vw, 8rem);
+        font-weight: 900;
+        line-height: 0.88;
+        letter-spacing: 0.04em;
+        color: #fff;
+        margin-bottom: 24px;
+        animation: fadeUp 0.8s ease 0.1s both;
+      }
+      .hero-title span {
+        display: block;
+      }
+      .hero-title .t1 {
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 0 0 60px rgba(255, 215, 0, 0.15);
+      }
+      .hero-title .t2 {
+        background: linear-gradient(
+          135deg,
+          var(--gold),
+          var(--gold-light),
+          var(--gold2)
+        );
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 4s ease-in-out infinite;
+        filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.2));
+      }
+      @keyframes shimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      .hero-sub {
+        font-size: clamp(0.82rem, 1.8vw, 1.05rem);
+        color: var(--text-dim);
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-weight: 300;
+        margin-bottom: 52px;
+        animation: fadeUp 0.8s ease 0.2s both;
+      }
+      .hero-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 0 auto 20px;
+        animation: fadeUp 0.8s ease 0.15s both;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeUp 0.8s ease 0.3s both;
+      }
+      .btn {
+        padding: 16px 40px;
+        border-radius: 12px;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        transition: all 0.35s var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        border: none;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .btn:hover::before {
+        opacity: 1;
+      }
+      .btn-gold {
+        background: linear-gradient(135deg, var(--gold), var(--gold2));
+        color: #000;
+        box-shadow: 0 4px 24px rgba(255, 215, 0, 0.2);
+      }
+      .btn-gold:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 48px rgba(255, 215, 0, 0.35);
+      }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 215, 0, 0.15);
+        color: var(--gold);
+        backdrop-filter: blur(8px);
+      }
+      .btn-ghost:hover {
+        border-color: rgba(255, 215, 0, 0.5);
+        background: rgba(255, 215, 0, 0.06);
+        transform: translateY(-3px);
+      }
+      .hero-scroll {
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        animation: bounce 2.5s ease-in-out infinite;
+      }
+      .hero-scroll span {
+        display: block;
+        width: 24px;
+        height: 38px;
+        border: 1.5px solid rgba(255, 215, 0, 0.25);
+        border-radius: 12px;
+        position: relative;
+      }
+      .hero-scroll span::after {
+        content: "";
+        width: 3px;
+        height: 7px;
+        background: var(--gold);
+        border-radius: 2px;
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: scrollDot 2s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+      }
+      @keyframes scrollDot {
+        0% {
+          opacity: 1;
+          top: 7px;
+        }
+        100% {
+          opacity: 0;
+          top: 22px;
+        }
+      }
+
+      /* === MARQUEE === */
+      .marquee-wrap {
+        overflow: hidden;
+        background: linear-gradient(
+          90deg,
+          var(--gold),
+          var(--gold2),
+          var(--gold)
+        );
+        padding: 11px 0;
+        position: relative;
+        z-index: 2;
+      }
+      .marquee {
+        display: flex;
+        gap: 60px;
+        animation: marquee 35s linear infinite;
+        white-space: nowrap;
+      }
+      .marquee span {
+        font-family: "Cinzel", serif;
+        font-weight: 900;
+        font-size: 0.75rem;
+        color: #000;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* === SECTION DEFAULTS === */
+      section {
+        padding: 130px 0;
+        position: relative;
+      }
+      .stag {
+        font-size: 0.68rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .stag.center {
+        justify-content: center;
+      }
+      .stag::before,
+      .stag::after {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--gold);
+        opacity: 0.4;
+      }
+      .stitle {
+        font-size: clamp(2rem, 4.5vw, 3.2rem);
+        font-weight: 900;
+        margin-bottom: 22px;
+        line-height: 1.08;
+        letter-spacing: 0.02em;
+      }
+      .sdesc {
+        color: var(--text-dim);
+        max-width: 560px;
+        font-size: 1rem;
+        line-height: 1.85;
+      }
+      .scenter {
+        text-align: center;
+      }
+      .scenter .sdesc {
+        margin: 0 auto 64px;
+      }
+      .scenter .stag {
+        justify-content: center;
+      }
+
+      /* Decorative section dividers */
+      .section-divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 215, 0, 0.08),
+          transparent
+        );
+        margin: 0;
+      }
+
+      /* === STATS BAR === */
+      .stats-bar {
+        background: var(--bg2);
+        border-top: 1px solid rgba(255, 215, 0, 0.04);
+        border-bottom: 1px solid rgba(255, 215, 0, 0.04);
+        padding: 48px 0;
+        position: relative;
+      }
+      .stats-bar::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 215, 0, 0.02),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        text-align: center;
+      }
+      .stat-item {
+        padding: 8px 0;
+        position: relative;
+      }
+      .stat-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background: rgba(255, 215, 0, 0.06);
+      }
+      .sstat-val {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+        font-weight: 900;
+        color: var(--gold);
+        display: block;
+        transition: color 0.4s;
+      }
+      .sstat-val.loading {
+        animation: pulse 1.5s ease infinite;
+      }
+      .sstat-lbl {
+        font-size: 0.68rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-top: 6px;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      /* === CONTRACT ADDRESS === */
+      .contract-section {
+        text-align: center;
+        padding: 28px 0 0;
+      }
+      .ca-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: rgba(255, 215, 0, 0.03);
+        border: 1px solid rgba(255, 215, 0, 0.08);
+        padding: 14px 28px;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: all 0.4s var(--transition);
+        font-family: "Courier New", monospace;
+        font-size: clamp(0.58rem, 1.4vw, 0.82rem);
+        color: var(--text-dim);
+        position: relative;
+        overflow: hidden;
+      }
+      .ca-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.04),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .ca-box:hover {
+        border-color: rgba(255, 215, 0, 0.25);
+        transform: scale(1.02);
+      }
+      .ca-box:hover::before {
+        opacity: 1;
+      }
+      .ca-box .ci {
+        color: var(--gold);
+        font-size: 1rem;
+        flex-shrink: 0;
+        transition: transform 0.3s;
+      }
+      .ca-box:hover .ci {
+        transform: scale(1.15);
+      }
+
+      /* === THRONE — SHOWCASE === */
+      .throne {
+        background: var(--bg2);
+        overflow: hidden;
+        position: relative;
+      }
+      .throne::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 215, 0, 0.03),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .throne-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .throne-img {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        aspect-ratio: 4/5;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 215, 0, 0.06);
+      }
+      .throne-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1s var(--transition);
+      }
+      .throne-img:hover img {
+        transform: scale(1.05);
+      }
+      .throne-glow {
+        position: absolute;
+        inset: -2px;
+        border-radius: 26px;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          rgba(255, 215, 0, 0.12),
+          transparent,
+          rgba(255, 215, 0, 0.08),
+          transparent
+        );
+        animation: glowSpin 10s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes glowSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .throne-text .sdesc {
+        margin-bottom: 18px;
+      }
+      .throne-text .hl {
+        color: var(--gold);
+        font-weight: 600;
+      }
+      .throne-text .btn {
+        margin-top: 32px;
+      }
+      .throne-features {
+        display: flex;
+        gap: 20px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+      .throne-feat {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        padding: 8px 16px;
+        background: rgba(255, 215, 0, 0.03);
+        border: 1px solid rgba(255, 215, 0, 0.06);
+        border-radius: 10px;
+      }
+      .throne-feat span {
+        color: var(--gold);
+      }
+
+      /* === ABOUT CARDS === */
+      .about {
+        background: var(--bg);
+        position: relative;
+      }
+      .about::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 400px;
+        background: radial-gradient(
+          ellipse,
+          rgba(255, 215, 0, 0.02),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 64px;
+      }
+      .ac {
+        background: rgba(255, 215, 0, 0.015);
+        border: 1px solid rgba(255, 215, 0, 0.04);
+        border-radius: 20px;
+        padding: 44px 30px;
+        transition: all 0.5s var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .ac::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .ac::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 215, 0, 0.04),
+          transparent 70%
+        );
+        pointer-events: none;
+        transition: opacity 0.4s;
+        opacity: 0;
+      }
+      .ac:hover {
+        border-color: rgba(255, 215, 0, 0.18);
+        transform: translateY(-10px);
+        box-shadow: 0 28px 64px rgba(0, 0, 0, 0.4);
+      }
+      .ac:hover::before {
+        opacity: 1;
+      }
+      .ac:hover::after {
+        opacity: 1;
+      }
+      .ac-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: rgba(255, 215, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 28px;
+        border: 1px solid rgba(255, 215, 0, 0.08);
+        transition: all 0.4s;
+      }
+      .ac:hover .ac-icon {
+        background: rgba(255, 215, 0, 0.1);
+        border-color: rgba(255, 215, 0, 0.2);
+        transform: scale(1.05);
+      }
+      .ac h3 {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+        letter-spacing: 0.02em;
+      }
+      .ac p {
+        color: var(--text-dim);
+        font-size: 0.88rem;
+        line-height: 1.75;
+      }
+
+      /* === CTA BREAK — CINEMATIC === */
+      .cta-break {
+        position: relative;
+        height: 70vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .cta-break-bg {
+        position: absolute;
+        inset: 0;
+      }
+      .cta-break-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 10s linear;
+      }
+      .cta-break:hover .cta-break-bg img {
+        transform: scale(1.05);
+      }
+      .cta-break-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(3, 3, 5, 0.45) 0%,
+          rgba(3, 3, 5, 0.85) 70%,
+          rgba(3, 3, 5, 0.95) 100%
+        );
+      }
+      .cta-break-bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          180deg,
+          rgba(3, 3, 5, 0.3) 0%,
+          transparent 20%,
+          transparent 80%,
+          rgba(3, 3, 5, 0.3) 100%
+        );
+      }
+      .cta-break-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 24px;
+      }
+      .cta-break h2 {
+        font-size: clamp(2rem, 5.5vw, 3.8rem);
+        margin-bottom: 18px;
+        color: #fff;
+        text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.03em;
+      }
+      .cta-break p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 1.1rem;
+        max-width: 520px;
+        margin: 0 auto 40px;
+        line-height: 1.85;
+      }
+      .cta-break .btn-gold {
+        font-size: 1rem;
+        padding: 18px 48px;
+      }
+
+      /* === REALMS GALLERY === */
+      .realms {
+        background: var(--bg2);
+        padding: 140px 0;
+      }
+      .realms-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 64px;
+      }
+      .rc {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        cursor: pointer;
+        transition: all 0.5s var(--transition);
+      }
+      .rc::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        border: 1px solid rgba(255, 215, 0, 0.04);
+        border-radius: 20px;
+        transition: border-color 0.4s;
+        pointer-events: none;
+      }
+      .rc:hover::before {
+        border-color: rgba(255, 215, 0, 0.2);
+      }
+      .rc img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s var(--transition), filter 0.6s;
+      }
+      .rc:hover img {
+        transform: scale(1.08);
+        filter: brightness(1.05);
+      }
+      .rc::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.92) 0%,
+          rgba(0, 0, 0, 0.2) 35%,
+          transparent 100%
+        );
+        transition: all 0.4s;
+      }
+      .rc:hover::after {
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          transparent 50%
+        );
+      }
+      .rc-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 28px 20px;
+        z-index: 3;
+      }
+      .rc-icon {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        display: block;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+      }
+      .rc h3 {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, var(--gold), var(--gold-light));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 0.02em;
+      }
+      .rc p {
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.55;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: all 0.4s 0.1s var(--transition);
+        max-height: 0;
+        overflow: hidden;
+      }
+      .rc:hover p {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 100px;
+      }
+
+      /* === BATTLE STATS (Tokenomics) === */
+      .battle {
+        background: var(--bg);
+      }
+      .battle-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 64px;
+      }
+      .bc {
+        text-align: center;
+        padding: 44px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 215, 0, 0.04);
+        background: rgba(255, 215, 0, 0.015);
+        transition: all 0.5s var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .bc::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .bc:hover {
+        border-color: rgba(255, 215, 0, 0.18);
+        transform: translateY(-8px);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+      }
+      .bc:hover::before {
+        opacity: 1;
+      }
+      .bc-emoji {
+        font-size: 2.8rem;
+        margin-bottom: 18px;
+        display: block;
+      }
+      .bc h3 {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+        color: var(--gold);
+      }
+      .bc p {
+        font-size: 0.82rem;
+        color: var(--text-dim);
+        line-height: 1.65;
+      }
+
+      /* === ROADMAP === */
+      .roadmap {
+        background: var(--bg2);
+        position: relative;
+        overflow: hidden;
+      }
+      .roadmap-bg {
+        position: absolute;
+        inset: 0;
+        opacity: 0.06;
+      }
+      .roadmap-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(2px);
+      }
+      .roadmap > .container {
+        position: relative;
+        z-index: 1;
+      }
+      .road-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 64px;
+      }
+      .rd {
+        padding: 36px 24px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 215, 0, 0.04);
+        background: rgba(255, 215, 0, 0.015);
+        transition: all 0.5s var(--transition);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .rd::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: var(--gold);
+        opacity: 0;
+        transition: all 0.4s;
+      }
+      .rd:hover {
+        border-color: rgba(255, 215, 0, 0.18);
+        transform: translateY(-8px);
+      }
+      .rd:hover::before {
+        opacity: 1;
+        width: 80px;
+      }
+      .rd.active {
+        border-color: rgba(255, 215, 0, 0.2);
+        background: rgba(255, 215, 0, 0.03);
+      }
+      .rd.active::before {
+        opacity: 0.6;
+        width: 60px;
+      }
+      .rd-phase {
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+      .rd-emoji {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .rd h3 {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+      .rd p {
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        line-height: 1.65;
+      }
+
+      /* === COMMUNITY === */
+      .community {
+        background: var(--bg);
+      }
+      .comm-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 64px;
+      }
+      .cc {
+        background: rgba(255, 215, 0, 0.015);
+        border: 1px solid rgba(255, 215, 0, 0.04);
+        border-radius: 20px;
+        padding: 44px 20px;
+        text-align: center;
+        transition: all 0.5s var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+      .cc::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 215, 0, 0.03),
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .cc:hover {
+        border-color: rgba(255, 215, 0, 0.25);
+        transform: translateY(-8px);
+        box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+      }
+      .cc:hover::after {
+        opacity: 1;
+      }
+      .cc-icon {
+        font-size: 2.8rem;
+        margin-bottom: 18px;
+        display: block;
+        position: relative;
+        z-index: 1;
+        transition: transform 0.4s var(--transition);
+      }
+      .cc:hover .cc-icon {
+        transform: scale(1.12);
+      }
+      .cc h3 {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      .cc p {
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* === FOOTER === */
+      .footer {
+        background: var(--bg2);
+        border-top: 1px solid rgba(255, 215, 0, 0.03);
+        padding: 64px 0 32px;
+        text-align: center;
+        position: relative;
+      }
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        opacity: 0.2;
+      }
+      .footer-logo {
+        font-family: "Cinzel", serif;
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: var(--gold);
+        margin-bottom: 20px;
+        display: inline-block;
+        letter-spacing: 0.1em;
+      }
+      .footer-links {
+        display: flex;
+        gap: 28px;
+        justify-content: center;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: var(--text-muted);
+        font-size: 0.78rem;
+        transition: color 0.3s;
+        letter-spacing: 0.04em;
+      }
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+      .footer-divider {
+        width: 80px;
+        height: 1px;
+        background: rgba(255, 215, 0, 0.06);
+        margin: 24px auto;
+      }
+      .footer-disc {
+        font-size: 0.68rem;
+        color: var(--text-muted);
+        max-width: 560px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* === FLOATING BUY === */
+      .fbuy {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+        padding: 14px 30px;
+        background: linear-gradient(135deg, var(--gold), var(--gold2));
+        color: #000;
+        font-family: "Cinzel", serif;
+        font-weight: 900;
+        font-size: 0.82rem;
+        border-radius: 50px;
+        box-shadow: 0 8px 36px rgba(255, 215, 0, 0.3);
+        transition: all 0.35s var(--transition);
+        letter-spacing: 0.05em;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .fbuy.show {
+        opacity: 1;
+        pointer-events: auto;
+        animation: floatBtn 4s ease-in-out infinite;
+      }
+      .fbuy:hover {
+        transform: scale(1.06) translateY(-2px);
+        box-shadow: 0 14px 48px rgba(255, 215, 0, 0.45);
+      }
+      @keyframes floatBtn {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      /* === TOAST === */
+      .toast {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: var(--gold);
+        color: #000;
+        padding: 12px 32px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        z-index: 9999;
+        opacity: 0;
+        transition: all 0.4s var(--transition);
+        pointer-events: none;
+        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.25);
+      }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      /* === REVEAL ANIMATIONS === */
+      .rv {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+      .rv.vis {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .rv-l {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.9s ease;
+      }
+      .rv-l.vis {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .rv-r {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.9s ease;
+      }
+      .rv-r.vis {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .rv-s {
+        opacity: 0;
+        transform: scale(0.92);
+        transition: all 0.8s ease;
+      }
+      .rv-s.vis {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* === RESPONSIVE === */
+      @media (max-width: 1024px) {
+        .realms-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .comm-grid,
+        .battle-grid,
+        .road-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .throne-inner {
+          grid-template-columns: 1fr;
+          gap: 48px;
+          text-align: center;
+        }
+        .throne-text .stag {
+          justify-content: center;
+        }
+        .throne-features {
+          justify-content: center;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        .stat-item::after {
+          display: none;
+        }
+      }
+      @media (max-width: 768px) {
+        :root {
+          --nav-h: 64px;
+        }
+        section {
+          padding: 100px 0;
+        }
+        .burger {
+          display: flex;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 280px;
+          height: 100vh;
+          background: rgba(3, 3, 5, 0.98);
+          backdrop-filter: blur(24px);
+          flex-direction: column;
+          padding: 100px 40px 40px;
+          gap: 24px;
+          transition: right 0.4s var(--transition);
+          border-left: 1px solid rgba(255, 215, 0, 0.06);
+        }
+        .nav-links.open {
+          right: 0;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .realms-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+        .rc {
+          aspect-ratio: 3/4;
+        }
+        .rc p {
+          opacity: 1;
+          transform: none;
+          max-height: 100px;
+        }
+        .hero-title {
+          font-size: clamp(2.8rem, 12vw, 4.5rem);
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+        .battle-grid,
+        .road-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .comm-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .fbuy {
+          bottom: 18px;
+          right: 18px;
+          padding: 12px 22px;
+          font-size: 0.76rem;
+        }
+        .cta-break {
+          height: 60vh;
+          min-height: 400px;
+        }
+      }
+      @media (max-width: 480px) {
+        .realms-grid,
+        .comm-grid,
+        .battle-grid,
+        .road-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+        .btn {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">DOGEFATHER</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#realms">Realms</a></li>
+          <li><a href="#battle">Tokenomics</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#community">Legion</a></li>
+          <li>
+            <a
+              href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+              target="_blank"
+              class="nav-cta"
+              >Buy $DOGEFATHER</a
+            >
+          </li>
+        </ul>
+        <div class="burger" id="burger" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- FLOATING BUY -->
+    <a
+      href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+      target="_blank"
+      class="fbuy"
+      id="fbuy"
+      >🚀 BUY NOW</a
+    >
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">
+        <img src="assets/x.png" alt="DOGEFATHER emperor battlefield" />
+      </div>
+      <div class="hero-content">
+        <div class="hero-pfp"><img src="assets/logo.png" alt="DOGEFATHER" /></div>
+        <div class="hero-badge"><span class="dot"></span> LIVE ON ETHEREUM</div>
+        <h1 class="hero-title">
+          <span class="t1">DOGEFATHER</span><span class="t2"></span>
+        </h1>
+        <div class="hero-divider"></div>
+        <p class="hero-sub">
+          Emperor of the Blockchain · Ruler of Eight Realms
+        </p>
+        <div class="hero-actions">
+          <a
+            href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+            target="_blank"
+            class="btn btn-gold"
+            >🚀 Buy Now</a
+          >
+          <a
+            href="https://dexscreener.com/ethereum/0xcomingsoon"
+            target="_blank"
+            class="btn btn-ghost"
+            >📊 Chart</a
+          >
+          <a
+            href="https://t.me/DogeFatherBack"
+            target="_blank"
+            class="btn btn-ghost"
+            >💬 Telegram</a
+          >
+        </div>
+      </div>
+      <div class="hero-scroll"><span></span></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+      <div class="marquee">
+        <span>DOGEFATHER IS INEVITABLE</span><span>👑 EMPEROR OF THE CHAIN</span
+        ><span>ZERO TAX · LP BURNT · RENOUNCED</span
+        ><span>⚔️ 8 REALMS CONQUERED</span><span>BUILT DIFFERENT</span
+        ><span>💀 THE EMPEROR NEVER SLEEPS</span
+        ><span>YOUR FAVORITE TOKEN'S FAVORITE TOKEN</span>
+        <span>DOGEFATHER IS INEVITABLE</span><span>👑 EMPEROR OF THE CHAIN</span
+        ><span>ZERO TAX · LP BURNT · RENOUNCED</span
+        ><span>⚔️ 8 REALMS CONQUERED</span><span>BUILT DIFFERENT</span
+        ><span>💀 THE EMPEROR NEVER SLEEPS</span
+        ><span>YOUR FAVORITE TOKEN'S FAVORITE TOKEN</span>
+      </div>
+    </div>
+
+    <!-- THRONE SHOWCASE -->
+    <section class="throne">
+      <div class="container">
+        <div class="throne-inner">
+          <div class="throne-img rv-l">
+            <div class="throne-glow"></div>
+            <img
+              src="assets/grokius-10.png"
+              alt="DOGEFATHER on the Golden Throne"
+              loading="lazy"
+            />
+          </div>
+          <div class="throne-text rv-r">
+            <div class="stag">The Legend</div>
+            <h2 class="stitle">The Emperor Who Conquered Everything</h2>
+            <p class="sdesc">
+              a GREAT LEADER MAKES A WHOLE ARMY TRIUMPH.<br />
+              VITALIK BUTERIN OF ETHEREUM ARMY IS DogeFather
+            </p>
+            <p class="sdesc">
+              No tax. No team tokens. No bullshit. Just
+              <span class="hl">pure memetic supremacy</span>.
+            </p>
+            <div class="throne-features">
+              <div class="throne-feat"><span>⚡</span> 0% Tax</div>
+              <div class="throne-feat"><span>🔥</span> LP Burnt</div>
+              <div class="throne-feat"><span>✅</span> Renounced</div>
+            </div>
+            <a
+              href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+              target="_blank"
+              class="btn btn-gold"
+              >⚡ Join the Empire</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="container scenter">
+        <div class="rv">
+          <div class="stag center">Why DOGEFATHER?</div>
+          <h2 class="stitle">Not Your Average Meme Coin</h2>
+          <p class="sdesc">
+            While other tokens promise "utility" and deliver PowerPoint slides,
+            DOGEFATHER conquered 8 realms before breakfast.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="ac rv">
+            <div class="ac-icon">🧠</div>
+            <h3>1000x Based</h3>
+            <p>
+              More based than your entire portfolio combined. The emperor
+              doesn't follow trends — trends follow him.
+            </p>
+          </div>
+          <div class="ac rv">
+            <div class="ac-icon">💀</div>
+            <h3>Unstoppable</h3>
+            <p>
+              DOGEFATHER gets stronger every day. Diamond-forged,
+              community-powered, absolutely unstoppable.
+            </p>
+          </div>
+          <div class="ac rv">
+            <div class="ac-icon">👑</div>
+            <h3>Elon Who?</h3>
+            <p>
+              While they tweet, DOGEFATHER conquers. No tax, no team tokens, no
+              bullshit. Pure digital supremacy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BREAK 1 — Dragon -->
+    <section class="cta-break">
+      <div class="cta-break-bg">
+        <img
+          src="assets/cta-break1.png"
+          alt="DOGEFATHER lightning god"
+          loading="lazy"
+        />
+      </div>
+      <div class="cta-break-content rv">
+        <h2>You're Still Not In?</h2>
+        <p>
+          While you're reading, others are accumulating. The emperor rewards the
+          bold.
+        </p>
+        <a
+          href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+          target="_blank"
+          class="btn btn-gold"
+          >🚀 APE IN NOW</a
+        >
+      </div>
+    </section>
+
+    <!-- REALMS -->
+    <section class="realms" id="realms">
+      <div class="container scenter">
+        <div class="rv">
+          <div class="stag center">Eight Realms</div>
+          <h2 class="stitle">Domains of Power</h2>
+          <p class="sdesc">
+            Each realm conquered. Each territory claimed. Hover to explore the
+            emperor's dominion.
+          </p>
+        </div>
+        <div class="realms-grid">
+          <div class="rc rv">
+            <img
+              src="assets/grokius-10.png"
+              alt="Golden Throne"
+              loading="lazy"
+            />
+            <div class="rc-text">
+              <span class="rc-icon">👑</span>
+              <h3>The Golden Throne</h3>
+              <p>
+                Where the emperor reigns eternal. The seat of absolute power.
+              </p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img
+              src="assets/grokius-2.jpeg"
+              alt="Phoenix Rider"
+              loading="lazy"
+            />
+            <div class="rc-text">
+              <span class="rc-icon">🔥</span>
+              <h3>The Phoenix Rider</h3>
+              <p>Rising to new heights on wings of glory. Eternal.</p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img
+              src="assets/grokius-12.jpeg"
+              alt="Dragon Rider"
+              loading="lazy"
+            />
+            <div class="rc-text">
+              <span class="rc-icon">🐉</span>
+              <h3>The Dragon Rider</h3>
+              <p>
+                Commanding thunder and lightning atop his beast. The skies
+                kneel.
+              </p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img
+              src="assets/grokius-15.jpeg"
+              alt="Space Emperor"
+              loading="lazy"
+            />
+            <div class="rc-text">
+              <span class="rc-icon">🌌</span>
+              <h3>The Space Emperor</h3>
+              <p>Conquering galaxies while you check 5-min charts.</p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img
+              src="assets/grokius-4.jpeg"
+              alt="Frost Conqueror"
+              loading="lazy"
+            />
+            <div class="rc-text">
+              <span class="rc-icon">❄️</span>
+              <h3>The Frost Conqueror</h3>
+              <p>
+                Even frozen giants bow. No realm too cold, no peak too high.
+              </p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img src="assets/grokius-3.jpeg" alt="The Forge" loading="lazy" />
+            <div class="rc-text">
+              <span class="rc-icon">🌋</span>
+              <h3>The Volcanic Forge</h3>
+              <p>
+                Forged in molten fire. Where legends are hammered into
+                existence.
+              </p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img
+              src="assets/grokius-5.png"
+              alt="Lightning God"
+              loading="lazy"
+            />
+            <div class="rc-text">
+              <span class="rc-icon">⚡</span>
+              <h3>The Lightning God</h3>
+              <p>Ancient ruins tremble as the emperor channels pure power.</p>
+            </div>
+          </div>
+          <div class="rc rv">
+            <img src="assets/grokius-7.jpeg" alt="The Scholar" loading="lazy" />
+            <div class="rc-text">
+              <span class="rc-icon">📚</span>
+              <h3>The Scholar Emperor</h3>
+              <p>
+                Knowledge is power. The wisest warrior studies before he
+                strikes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BREAK 2 — Sea Dragon -->
+    <section class="cta-break">
+      <div class="cta-break-bg">
+        <img
+          src="assets/cta-break2.png"
+          alt="DOGEFATHER dragon rider"
+          loading="lazy"
+        />
+      </div>
+      <div class="cta-break-content rv">
+        <h2>To The Moon. Literally.</h2>
+        <p>
+          Zero tax. LP burnt. Contract renounced. The smoothest ride to the
+          moon.
+        </p>
+        <a
+          href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+          target="_blank"
+          class="btn btn-gold"
+          >👑 CLAIM YOUR THRONE</a
+        >
+      </div>
+    </section>
+
+    <!-- BATTLE STATS -->
+    <section class="battle" id="battle">
+      <div class="container scenter">
+        <div class="rv">
+          <div class="stag center">Power Stats</div>
+          <h2 class="stitle">Emperor's Power Level: MAX</h2>
+          <p class="sdesc">Every warrior has stats. DOGEFATHER maxed them all.</p>
+        </div>
+        <div class="battle-grid">
+          <div class="bc rv">
+            <span class="bc-emoji">⚔️</span>
+            <h3>1,000,000,000</h3>
+            <p>Total Supply — Fixed forever. No printer goes brrr.</p>
+          </div>
+          <div class="bc rv">
+            <span class="bc-emoji">🔥</span>
+            <h3>BURNT</h3>
+            <p>LP burnt forever. Secure. Immutable. Emperor's honor.</p>
+          </div>
+          <div class="bc rv">
+            <span class="bc-emoji">⚡</span>
+            <h3>0% TAX</h3>
+            <p>No fees. No hidden slippage. Pure speed. Pure power.</p>
+          </div>
+          <div class="bc rv">
+            <span class="bc-emoji">🍀</span>
+            <h3>RENOUNCED</h3>
+            <p>Contract ownership renounced. No backdoors. No admin keys.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="roadmap" id="roadmap">
+      <div class="roadmap-bg">
+        <img src="assets/grokius-9.png" alt="" loading="lazy" />
+      </div>
+      <div class="container scenter">
+        <div class="rv">
+          <div class="stag center">Conquest Plan</div>
+          <h2 class="stitle">The Path to Dominion</h2>
+          <p class="sdesc">
+            Four phases. One destiny. DOGEFATHER only moves forward.
+          </p>
+        </div>
+        <div class="road-grid">
+          <div class="rd active rv">
+            <span class="rd-emoji">👑</span>
+            <div class="rd-phase">Phase I — Awakening</div>
+            <h3>Launch Day</h3>
+            <p>Launch. Website. Community. From zero to "this is real."</p>
+          </div>
+          <div class="rd rv">
+            <span class="rd-emoji">⚔️</span>
+            <div class="rd-phase">Phase II — Conquest</div>
+            <h3>Empire Strikes</h3>
+            <p>
+              DEX listings. CG & CMC. CT raids. KOL alliances. Map turns gold.
+            </p>
+          </div>
+          <div class="rd rv">
+            <span class="rd-emoji">🤖</span>
+            <div class="rd-phase">Phase III — Domination</div>
+            <h3>Full Send</h3>
+            <p>
+              Trading bot. Staking. NFTs. DAO governance. Holders become
+              senators.
+            </p>
+          </div>
+          <div class="rd rv">
+            <span class="rd-emoji">⚡</span>
+            <div class="rd-phase">Phase IV — Transcendence</div>
+            <h3>God Mode</h3>
+            <p>CEX listings. Cross-chain. Full transcendence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="community" id="community">
+      <div class="container scenter">
+        <div class="rv">
+          <div class="stag center">Legion</div>
+          <h2 class="stitle">Join the Empire</h2>
+          <p class="sdesc">The gates are open. Enter, or be conquered.</p>
+        </div>
+        <div class="comm-grid">
+          <a href="https://t.me/DogeFatherBack" target="_blank" class="cc rv"
+            ><span class="cc-icon">💬</span>
+            <h3>Telegram</h3>
+            <p>Inner circle. Alpha daily.</p></a
+          >
+          <a href="https://x.com/DogeFatherBack" target="_blank" class="cc rv"
+            ><span class="cc-icon">𝕏</span>
+            <h3>Twitter / X</h3>
+            <p>Emperor speaks. Join the legion.</p></a
+          >
+          <a
+            href="https://dexscreener.com/ethereum/0xcomingsoon"
+            target="_blank"
+            class="cc rv"
+            ><span class="cc-icon">📊</span>
+            <h3>DexScreener</h3>
+            <p>Green candles. Live.</p></a
+          >
+          <a
+            href="https://app.uniswap.org/swap?inputCurrency=NATIVE&outputCurrency=0xcomingsoon"
+            target="_blank"
+            class="cc rv"
+            ><span class="cc-icon">🦄</span>
+            <h3>Uniswap</h3>
+            <p>Ape in. Emperor rewards the bold.</p></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo">DogeFather</div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#realms">Realms</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="https://t.me/DogeFatherBack" target="_blank">Telegram</a>
+          <a href="https://x.com/DogeFatherBack" target="_blank">X</a>
+        </div>
+        <div class="footer-divider"></div>
+        <p class="footer-disc">
+          $DOGEFATHER is a meme token on ETH. No intrinsic value or expectation of
+          financial return. Not financial advice. DYOR. © 2026 DogeFather.
+          All realms reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">✅ Copied!</div>
+
+    <script>
+      // NAV scroll
+      const nav = document.getElementById("nav");
+      let lastScroll = 0;
+      window.addEventListener(
+        "scroll",
+        () => {
+          nav.classList.toggle("solid", scrollY > 80);
+          const fb = document.getElementById("fbuy");
+          fb.classList.toggle("show", scrollY > innerHeight * 0.6);
+          lastScroll = scrollY;
+        },
+        { passive: true }
+      );
+
+      function toggleMenu() {
+        document.getElementById("burger").classList.toggle("on");
+        document.getElementById("navLinks").classList.toggle("open");
+      }
+      document.querySelectorAll(".nav-links a").forEach((a) =>
+        a.addEventListener("click", () => {
+          document.getElementById("burger").classList.remove("on");
+          document.getElementById("navLinks").classList.remove("open");
+        })
+      );
+
+      // COPY CA
+      function copyCA() {
+        navigator.clipboard
+          .writeText("0xcomingsoon")
+          .then(() => {
+            const t = document.getElementById("toast");
+            t.classList.add("show");
+            setTimeout(() => t.classList.remove("show"), 2200);
+          });
+      }
+
+      // REVEAL on scroll
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("vis");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      );
+      document
+        .querySelectorAll(".rv,.rv-l,.rv-r,.rv-s")
+        .forEach((el) => obs.observe(el));
+
+      // Stagger reveal for grids
+      document
+        .querySelectorAll(
+          ".about-grid .ac, .realms-grid .rc, .battle-grid .bc, .road-grid .rd, .comm-grid .cc"
+        )
+        .forEach((el, i) => {
+          el.style.transitionDelay = (i % 4) * 0.1 + "s";
+        });
+
+      // DEXSCREENER live data
+      let prevPrice = null;
+      async function fetchData() {
+        try {
+          const r = await fetch(
+            "https://api.dexscreener.com/latest/dex/tokens/0xcomingsoon"
+          );
+          const d = await r.json();
+          if (d.pairs && d.pairs.length) {
+            const p = d.pairs[0];
+            const pr = parseFloat(p.priceUsd);
+            const mc = p.marketCap || p.fdv || 0;
+            const v = p.volume?.h24 || 0;
+            const ch = p.priceChange?.h24 || 0;
+
+            const pe = document.getElementById("price");
+            pe.textContent =
+              pr < 0.01 ? "$" + pr.toFixed(6) : "$" + pr.toFixed(4);
+            pe.classList.remove("loading");
+            if (prevPrice !== null && pr !== prevPrice) {
+              pe.style.color = pr > prevPrice ? "#22c55e" : "#ef4444";
+              setTimeout(() => {
+                pe.style.color = "";
+              }, 1500);
+            }
+            prevPrice = pr;
+
+            const me = document.getElementById("mcap");
+            me.textContent =
+              mc >= 1e6
+                ? "$" + (mc / 1e6).toFixed(2) + "M"
+                : mc >= 1e3
+                ? "$" + (mc / 1e3).toFixed(1) + "K"
+                : "$" + Math.round(mc);
+            me.classList.remove("loading");
+
+            const ve = document.getElementById("volume");
+            ve.textContent =
+              v >= 1e6
+                ? "$" + (v / 1e6).toFixed(2) + "M"
+                : v >= 1e3
+                ? "$" + (v / 1e3).toFixed(1) + "K"
+                : "$" + Math.round(v);
+            ve.classList.remove("loading");
+
+            const ce = document.getElementById("change");
+            ce.textContent = (ch >= 0 ? "+" : "") + ch.toFixed(1) + "%";
+            ce.style.color = ch >= 0 ? "#22c55e" : "#ef4444";
+            ce.classList.remove("loading");
+          }
+        } catch (e) {
+          ["price", "mcap", "volume", "change"].forEach((id) => {
+            const el = document.getElementById(id);
+            el.textContent = "—";
+            el.classList.remove("loading");
+          });
+        }
+      }
+      fetchData();
+      setInterval(fetchData, 10000);
+    </script>
+  </body>
+</html>
